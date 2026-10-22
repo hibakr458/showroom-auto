@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  background: linear-gradient(135deg, #f8a5c2, #e75480);
+  text-align: center;
+  padding: 24px;
+}
+
+h1 {
+  margin: 0;
+  color: #fff;
+  font-family: 'Georgia', serif;
+  letter-spacing: 0.05em;
+}

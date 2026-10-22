@@ -1,0 +1,90 @@
+:host {
+  --accent: #e75480;
+  --accent-dark: #c93d68;
+  --border: #f6d5de;
+  --text: #4a2c36;
+
+  display: block;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+}
+
+.panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px;
+  margin: 0 30px 30px;
+  padding: 16px 20px;
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(231, 84, 128, 0.1);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+input,
+select {
+  padding: 8px 12px;
+  font: inherit;
+  color: var(--text);
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(231, 84, 128, 0.2);
+}
+
+input {
+  width: 130px;
+}
+
+button {
+  all: unset;
+  box-sizing: border-box;
+  padding: 9px 18px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: var(--accent-dark);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button.reset {
+  color: var(--accent);
+  background: #fff;
+  border: 1.5px solid var(--accent);
+}
+
+button.reset:hover {
+  background: var(--border);
+}
