@@ -1,4 +1,4 @@
-<div class="auto-card">
+<div class="auto-card" [class.compared]="isCompared">
   <button class="fav" [class.active]="isFavorite" (click)="toggleFavorite()"
           [attr.aria-label]="isFavorite ? 'Remove from favorites' : 'Add to favorites'">
     <fa-icon [icon]="faHeart"></fa-icon>
@@ -13,7 +13,11 @@
       Only {{ car.availability }} left in stock
     </p>
   </div>
-  <div class="see-more">
+
+  <div class="actions">
     <button (click)="select()">see more...</button>
+    <button class="compare" [class.active]="isCompared" (click)="toggleCompare()">
+      {{ isCompared ? '✓ Compare' : 'Compare' }}
+    </button>
   </div>
 </div>

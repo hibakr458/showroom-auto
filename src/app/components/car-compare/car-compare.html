@@ -1,0 +1,50 @@
+<!-- 1 voiture choisie : petit bandeau en bas de l'écran -->
+@if (cars.length === 1) {
+  <div class="pill">
+    <span>Compare <strong>{{ cars[0].brand }} {{ cars[0].model }}</strong> with... (pick one more car)</span>
+    <button (click)="clear()">Cancel</button>
+  </div>
+}
+
+<!-- 2 voitures choisies : fenêtre de comparaison -->
+@if (cars.length === 2) {
+  <div class="backdrop" (click)="clear()">
+    <div class="modal" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+      <button class="close" (click)="clear()" aria-label="Close">✕</button>
+      <h2>Compare cars</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            @for (car of cars; track car.id) {
+              <th>
+                <img [src]="'images/' + car.photo" [alt]="car.brand + ' ' + car.model">
+                <div>{{ car.brand }} {{ car.model }}</div>
+              </th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">Price</td>
+            <td [class.best]="cars[0].price < cars[1].price">{{ cars[0].price }} DNT</td>
+            <td [class.best]="cars[1].price < cars[0].price">{{ cars[1].price }} DNT</td>
+          </tr>
+          <tr>
+            <td class="label">Power</td>
+            <td [class.best]="cars[0].power > cars[1].power">{{ cars[0].power }}</td>
+            <td [class.best]="cars[1].power > cars[0].power">{{ cars[1].power }}</td>
+          </tr>
+          <tr>
+            <td class="label">In stock</td>
+            <td [class.best]="cars[0].availability > cars[1].availability">{{ cars[0].availability }}</td>
+            <td [class.best]="cars[1].availability > cars[0].availability">{{ cars[1].availability }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="legend">Green = better value (lower price, higher power, more stock).</p>
+    </div>
+  </div>
+}

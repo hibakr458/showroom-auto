@@ -1,32 +1,24 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { HeadBar } from './components/head-bar/head-bar';
 import { SearchBar } from './components/search-bar/search-bar';
-import { FilterCriteria } from './interfaces/filter-criteria';
 import { FilterPanel } from './components/filter-panel/filter-panel';
-
-
-interface Auto {
-  id: number;
-  brand: string;
-  model: string;
-  price: number;
-  power: number;
-  photo: string;
-  availability: number;
-  description: string;
-}
+import { CarModal } from './components/car-modal/car-modal';
+import { CarCompare } from './components/car-compare/car-compare';
+import { Auto } from './interfaces/auto';
+import { FilterCriteria } from './interfaces/filter-criteria';
 
 @Component({
-  imports: [HeadBar, SearchBar, FilterPanel],
+  imports: [HeadBar, SearchBar, FilterPanel, CarModal, CarCompare],
   standalone: true,
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
 })
 export class App {
-  protected readonly title = signal('showroom-auto');
-
-  selectedCar!: Auto;
+  isDark = false;
+  selectedCar: Auto | null = null;
+  favorites: Auto[] = [];
+  compareList: Auto[] = [];
 
   criteria: FilterCriteria = { maxPrice: null, minPower: null, sortBy: 'none' };
   filteredAutos: Auto[] = [];
@@ -195,21 +187,25 @@ export class App {
   ]
 
 
+  
   constructor() {
-    this.title.set('My showroom');
     this.applyFilters();
   }
 
+  // ----- Détails (fenêtre "see more") -----
   selectCar(auto: Auto) {
     this.selectedCar = auto;
   }
 
-onFilterChange(criteria: FilterCriteria) {
-  console.log('App a reçu', criteria);
-  this.criteria = criteria;
-  this.applyFilters();
-  console.log('résultat', this.filteredAutos.length);
-}
+  closeCar() {
+    this.selectedCar = null;
+  }
+
+  // ----- Filtres et tri -----
+  onFilterChange(criteria: FilterCriteria) {
+    this.criteria = criteria;
+    this.applyFilters();
+  }
 
   private applyFilters() {
     const c = this.criteria;
@@ -229,15 +225,28 @@ onFilterChange(criteria: FilterCriteria) {
     this.filteredAutos = result;
   }
 
-  favorites: Auto[] = [];
 
-toggleFavorite(auto: Auto) {
-  this.favorites = this.favorites.includes(auto)
-    ? this.favorites.filter(a => a !== auto)
-    : [...this.favorites, auto];
-}
-
+  toggleFavorite(auto: Auto) {
+    this.favorites = this.favorites.includes(auto)
+      ? this.favorites.filter(a => a !== auto)
+      : [...this.favorites, auto];
+  }
 
 
+  toggleCompare(auto: Auto) {
+    if (this.compareList.includes(auto)) {
+      this.compareList = this.compareList.filter(a => a !== auto);
+    } else {
+      this.compareList = [...this.compareList, auto].slice(-2);
+    }
+  }
 
+  clearCompare() {
+    this.compareList = [];
+  }
+
+ 
+  toggleTheme() {
+    this.isDark = !this.isDark;
+  }
 }

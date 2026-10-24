@@ -1,0 +1,125 @@
+/* ---- bandeau (1 voiture choisie) ---- */
+.pill {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: calc(100% - 32px);
+  box-sizing: border-box;
+  padding: 10px 14px 10px 20px;
+  color: var(--text);
+  background: var(--card);
+  border: 1.5px solid var(--accent);
+  border-radius: 999px;
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+.pill button {
+  all: unset;
+  padding: 6px 14px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.pill button:hover {
+  background: var(--accent-dark);
+}
+
+/* ---- fenêtre de comparaison (2 voitures) ---- */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 28px;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+h2 {
+  margin: 0 0 16px;
+  color: var(--accent);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+th,
+td {
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+th img {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  height: 120px;
+  margin: 0 auto 8px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+td.label {
+  font-weight: 600;
+  text-align: left;
+  color: var(--muted);
+}
+
+td.best {
+  font-weight: 700;
+  color: var(--best-text);
+  background: var(--best);
+}
+
+.legend {
+  margin: 14px 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.close {
+  all: unset;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  color: var(--muted);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #fff;
+  background: var(--accent);
+}

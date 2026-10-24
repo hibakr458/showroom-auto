@@ -1,13 +1,38 @@
-.car-details {
-  background: #fff;
-  border: 1px solid #f6d5de;
-  box-shadow: 0 4px 12px rgba(231, 84, 128, 0.15);
+
+.app {
+  --bg: #fff5f7;
+  --card: #ffffff;
+  --text: #4a2c36;
+  --muted: #b08a95;
+  --border: #f6d5de;
+  --accent: #e75480;
+  --accent-dark: #c93d68;
+  --shadow: rgba(231, 84, 128, 0.15);
+  --header-from: #f8a5c2;
+  --header-to: #e75480;
+  --best: #e8f8ee;
+  --best-text: #1d7a43;
+
+  min-height: 100vh;
+  padding-bottom: 60px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  transition: background 0.3s, color 0.3s;
 }
 
-.car-details h2 {
-  color: #e75480;
-}
-
-.car-details .description {
-  color: #6b3f4d;
+/* Mode nuit */
+.app.dark {
+  --bg: #1b1218;
+  --card: #2a1b24;
+  --text: #f6e7ed;
+  --muted: #a98794;
+  --border: #4a2f3d;
+  --accent: #f06292;
+  --accent-dark: #e75480;
+  --shadow: rgba(0, 0, 0, 0.5);
+  --header-from: #4a1d33;
+  --header-to: #7a2a50;
+  --best: #1c3a2a;
+  --best-text: #7be0a6;
 }

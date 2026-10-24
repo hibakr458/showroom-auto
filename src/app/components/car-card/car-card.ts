@@ -25,4 +25,11 @@ export class CarCard {
   toggleFavorite() {
     this.onToggleFavorite.emit(this.car);
   }
+
+    @Input() isCompared = false;
+  @Output() onToggleCompare = new EventEmitter<Auto>();
+
+  toggleCompare() {
+    this.onToggleCompare.emit(this.car);
+  }
 }

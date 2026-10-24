@@ -1,9 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  imports: [],
+  imports: [FontAwesomeModule],
   selector: 'app-head-bar',
   styleUrl: './head-bar.css',
   templateUrl: './head-bar.html',
 })
-export class HeadBar {}
+export class HeadBar {
+  faMoon = faMoon;
+  faSun = faSun;
+
+  @Input() isDark = false;
+  @Output() onToggleTheme = new EventEmitter<void>();
+
+  toggleTheme() {
+    this.onToggleTheme.emit();
+  }
+}

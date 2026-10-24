@@ -1,8 +1,10 @@
 :host {
   display: block;
-  background: linear-gradient(135deg, #f8a5c2, #e75480);
+  position: relative;
+  background: linear-gradient(135deg, var(--header-from), var(--header-to));
   text-align: center;
   padding: 24px;
+  transition: background 0.3s;
 }
 
 h1 {
@@ -10,4 +12,33 @@ h1 {
   color: #fff;
   font-family: 'Georgia', serif;
   letter-spacing: 0.05em;
+}
+
+.theme-toggle {
+  all: unset;
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 1.1rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }

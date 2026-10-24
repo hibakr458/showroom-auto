@@ -8,11 +8,13 @@
 <div class="cars-container">
   @for (auto of selectedAutos; track auto.id) {
     <app-car-card
-  [car]="auto"
-  [isFavorite]="favorites.includes(auto)"
-  (onSelect)="selectCar($event)"
-  (onToggleFavorite)="toggleFavorite($event)">
-</app-car-card>
+      [car]="auto"
+      [isFavorite]="favorites.includes(auto)"
+      [isCompared]="compareList.includes(auto)"
+      (onSelect)="selectCar($event)"
+      (onToggleFavorite)="toggleFavorite($event)"
+      (onToggleCompare)="toggleCompare($event)">
+    </app-car-card>
   } @empty {
     <p class="empty">No cars match your search.</p>
   }

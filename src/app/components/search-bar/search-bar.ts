@@ -16,8 +16,10 @@ export class SearchBar implements OnChanges {
 
   @Input() autos: Auto[] = [];
   @Input() favorites: Auto[] = [];
+  @Input() compareList: Auto[] = [];    
   @Output() onSelectCar = new EventEmitter<Auto>();
   @Output() onToggleFavorite = new EventEmitter<Auto>();
+  @Output() onToggleCompare = new EventEmitter<Auto>(); 
 
   selectedAutos: Auto[] = [];
   currentBrand = '';
@@ -39,5 +41,9 @@ export class SearchBar implements OnChanges {
 
   toggleFavorite(auto: Auto) {
     this.onToggleFavorite.emit(auto);
+  }
+
+  toggleCompare(auto: Auto) {                                 
+    this.onToggleCompare.emit(auto);
   }
 }

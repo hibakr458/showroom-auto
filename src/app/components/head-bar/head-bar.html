@@ -1,3 +1,8 @@
 <div class="header">
-    <h1>Welcome to my showroom</h1>
+  <h1>Welcome to my showroom!</h1>
+
+  <button class="theme-toggle" (click)="toggleTheme()"
+          [attr.aria-label]="isDark ? 'Switch to light mode' : 'Switch to dark mode'">
+    <fa-icon [icon]="isDark ? faSun : faMoon"></fa-icon>
+  </button>
 </div>

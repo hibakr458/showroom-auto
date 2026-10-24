@@ -1,11 +1,5 @@
 :host {
-  --accent: #e75480;
-  --accent-dark: #c93d68;
-  --border: #f6d5de;
-  --text: #4a2c36;
-
   display: block;
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   color: var(--text);
 }
 
@@ -16,10 +10,11 @@
   gap: 16px;
   margin: 0 30px 30px;
   padding: 16px 20px;
-  background: #fff;
+  background: var(--card);
   border: 1.5px solid var(--border);
   border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(231, 84, 128, 0.1);
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: background 0.3s;
 }
 
 .field {
@@ -41,7 +36,7 @@ select {
   padding: 8px 12px;
   font: inherit;
   color: var(--text);
-  background: #fff;
+  background: var(--card);
   border: 1.5px solid var(--border);
   border-radius: 10px;
   outline: none;
@@ -51,7 +46,7 @@ select {
 input:focus,
 select:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(231, 84, 128, 0.2);
+  box-shadow: 0 0 0 3px var(--shadow);
 }
 
 input {
@@ -81,7 +76,7 @@ button:focus-visible {
 
 button.reset {
   color: var(--accent);
-  background: #fff;
+  background: transparent;
   border: 1.5px solid var(--accent);
 }
 
